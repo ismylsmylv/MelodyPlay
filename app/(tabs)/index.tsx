@@ -5,6 +5,7 @@ import {
   View,
   Text,
   SafeAreaView,
+  ScrollView,
 } from "react-native";
 
 import { HelloWave } from "@/components/HelloWave";
@@ -13,16 +14,18 @@ import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import NavigationBar from "@/components/NavigationBar";
 import PlayerMini from "@/components/PlayerMini";
+import GenreContainer from "@/components/GenreContainer";
 
 export default function HomeScreen() {
   return (
     <SafeAreaView>
-      <View style={styles.home}>
-        <Text>hi</Text>
-
-        <NavigationBar />
-        <PlayerMini />
-      </View>
+      <ScrollView>
+        <View style={styles.home}>
+          <NavigationBar />
+          <PlayerMini />
+          <GenreContainer />
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -46,5 +49,6 @@ const styles = StyleSheet.create({
   },
   home: {
     padding: 20,
+    marginTop: 20,
   },
 });
