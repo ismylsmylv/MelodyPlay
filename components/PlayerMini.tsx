@@ -30,6 +30,11 @@ const PlayerMini = () => {
 const styles = StyleSheet.create({
   main: {
     marginVertical: 30,
+    shadowColor: "black",
+    elevation: 20,
+    shadowOffset: { width: -2, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
   },
   info: {
     padding: 20,
