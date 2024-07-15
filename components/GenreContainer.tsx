@@ -21,7 +21,7 @@ const datas = [
 ];
 const GenreContainer = () => {
   return (
-    <View>
+    <View style={{ paddingHorizontal: 20, paddingRight: 0 }}>
       <Text style={styles.heading}>vibes & genres</Text>
       <FlatList
         style={styles.list}

@@ -15,6 +15,7 @@ import { ThemedView } from "@/components/ThemedView";
 import NavigationBar from "@/components/NavigationBar";
 import PlayerMini from "@/components/PlayerMini";
 import GenreContainer from "@/components/GenreContainer";
+import Recommended from "@/components/Recommended";
 
 export default function HomeScreen() {
   return (
@@ -24,6 +25,8 @@ export default function HomeScreen() {
           <NavigationBar />
           <PlayerMini />
           <GenreContainer />
+          <Recommended />
+          <Recommended />
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -48,7 +51,6 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   home: {
-    padding: 20,
     marginTop: 20,
   },
 });
