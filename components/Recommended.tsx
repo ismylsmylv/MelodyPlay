@@ -33,14 +33,14 @@ const Recommended = () => {
   return (
     <View style={styles.box}>
       <Text style={styles.heading}>Recommended</Text>
-      <View style={styles.song}>
+      <View>
         <FlatList
           // style={styles.list}
           data={datas}
           horizontal={true}
           renderItem={({ item }) => <AlbumBox album={item} />}
           showsHorizontalScrollIndicator={false}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item: { id: string }) => item.id}
           ItemSeparatorComponent={() => <View style={{ width: 10 }} />}
         />
       </View>
