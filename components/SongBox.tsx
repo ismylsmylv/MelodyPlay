@@ -1,18 +1,37 @@
 import React from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import {
+  Image,
+  StyleSheet,
+  Text,
+  TouchableHighlight,
+  View,
+} from "react-native";
 import { Dimensions } from "react-native";
+
 const windowWidth = Dimensions.get("window").width;
-const SongBox = ({ song }) => {
+
+const SongBox = ({ navigation }) => {
+  // Destructure navigation from props
+  const song = {
+    singer: "Thutmose",
+    title: "Memories",
+    icon: "https://i.scdn.co/image/ab67616d0000b273e2e352d89826aef6dbd5ff8f",
+    duration: "3:19",
+  };
+
   return (
-    <View style={styles.box}>
+    <TouchableHighlight
+      style={styles.box}
+      onPress={() => navigation.navigate("player", { name: "Jane" })}
+    >
       <View style={styles.content}>
         <Image
           source={{ uri: song.icon }}
-          height={60}
-          width={60}
-          borderRadius={5}
+          style={{ width: 60, height: 60, borderRadius: 5 }} // Adjusted style syntax
         />
-        <View>
+        <View style={{ marginLeft: 10 }}>
+          {" "}
+          {/* Adjusted margin style */}
           <Text style={styles.title} numberOfLines={1}>
             {song.title}
           </Text>
@@ -20,24 +39,20 @@ const SongBox = ({ song }) => {
         </View>
       </View>
       <Text>{song.duration}</Text>
-    </View>
+    </TouchableHighlight>
   );
 };
 
 const styles = StyleSheet.create({
   box: {
-    display: "flex",
+    flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    flexDirection: "row",
-    gap: 10,
+    padding: 10,
   },
   content: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "flex-start",
     flexDirection: "row",
-    gap: 10,
+    alignItems: "center",
   },
   title: {
     fontWeight: "500",
