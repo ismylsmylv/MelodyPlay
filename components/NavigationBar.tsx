@@ -28,6 +28,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     padding: 20,
+    position: "absolute",
+    minHeight: 50,
+    top: 0,
+    zIndex: 1,
+    width: "100%",
+    backgroundColor: "white",
   },
   right: {
     display: "flex",

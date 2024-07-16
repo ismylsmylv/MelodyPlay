@@ -1,56 +1,42 @@
 import {
-  Image,
-  StyleSheet,
-  Platform,
-  View,
-  Text,
   SafeAreaView,
   ScrollView,
+  StatusBar,
+  StyleSheet,
+  View,
 } from "react-native";
-
-import { HelloWave } from "@/components/HelloWave";
-import ParallaxScrollView from "@/components/ParallaxScrollView";
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
+import GenreContainer from "@/components/GenreContainer";
 import NavigationBar from "@/components/NavigationBar";
 import PlayerMini from "@/components/PlayerMini";
-import GenreContainer from "@/components/GenreContainer";
 import Recommended from "@/components/Recommended";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function HomeScreen() {
   return (
-    <SafeAreaView>
-      <ScrollView>
-        <View style={styles.home}>
-          <NavigationBar />
-          <PlayerMini />
-          <GenreContainer />
-          <Recommended />
-          <Recommended />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <SafeAreaProvider>
+      <SafeAreaView style={styles.safeArea}>
+        <StatusBar barStyle="dark-content" translucent={false} />
+        <NavigationBar />
+        <ScrollView>
+          <View style={styles.home}>
+            <PlayerMini />
+            <GenreContainer />
+            <Recommended />
+            <Recommended />
+          </View>
+        </ScrollView>
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: "absolute",
+  safeArea: {
+    flex: 1,
   },
   home: {
-    marginTop: 20,
+    marginTop: 50,
+    paddingTop: StatusBar.currentHeight,
+    overflow: "hidden",
   },
 });
