@@ -21,8 +21,8 @@ export default function HomeScreen() {
           <View style={styles.home}>
             <PlayerMini />
             <GenreContainer />
-            <Recommended />
-            <Recommended />
+            <Recommended heading={"Recommended"} />
+            <Recommended heading={"Recently played"} />
           </View>
         </ScrollView>
       </SafeAreaView>

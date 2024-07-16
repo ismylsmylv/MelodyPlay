@@ -29,10 +29,13 @@ const datas = [
   { text: "chill", icon: "logo-ionitron" },
   { text: "pop", icon: "logo-ionic" },
 ];
-const Recommended = () => {
+type Props = {
+  heading: string;
+};
+const Recommended = ({ heading }: Props) => {
   return (
     <View style={styles.box}>
-      <Text style={styles.heading}>Recommended</Text>
+      <Text style={styles.heading}>{heading}</Text>
       <View>
         <FlatList
           // style={styles.list}
