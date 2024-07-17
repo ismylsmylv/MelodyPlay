@@ -34,15 +34,17 @@ const AlbumBox = ({ album }) => {
         <Text style={styles.text}>Into the spider-verse</Text>
       </ImageBackground>
       <View style={styles.footer}>
-        <Text style={styles.name}>Into the spider-verse</Text>
-        <Text style={styles.artist}>Into the spider-verse</Text>
+        <Text style={styles.name}>{album.filename}</Text>
+        <Text style={styles.artist}>{album.artist}</Text>
       </View>
     </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
-  album: {},
+  album: {
+    marginRight: 5,
+  },
   image: {
     height: 150,
     width: 150,

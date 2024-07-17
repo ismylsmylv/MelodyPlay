@@ -80,19 +80,19 @@ const datas = [
 type Props = {
   heading: string;
 };
-const Recommended = ({ heading }: Props) => {
+const Recommended = ({ heading, musicFiles }: Props) => {
   return (
     <View style={styles.box}>
       <Text style={styles.heading}>{heading}</Text>
       <View>
         <FlatList
           // style={styles.list}
-          data={datas}
+          data={musicFiles}
           horizontal={true}
           renderItem={({ item }) => <AlbumBox album={item} />}
           showsHorizontalScrollIndicator={false}
           keyExtractor={(item: { id: string }) => item.id}
-          ItemSeparatorComponent={() => <View style={{ width: 10 }} />}
+          // ItemSeparatorComponent={() => <View style={{ width: 10 }} />}
         />
       </View>
     </View>
