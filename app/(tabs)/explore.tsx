@@ -1,15 +1,20 @@
 import Recommended from "@/components/Recommended";
 import SongList from "@/components/SongList";
+import { StatusBar } from "expo-status-bar";
 import { SafeAreaView, ScrollView, StyleSheet, Text } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function TabTwoScreen() {
   return (
-    <SafeAreaView>
-      <ScrollView>
-        <Recommended heading={"Recently played"} />
-        <SongList />
-      </ScrollView>
-    </SafeAreaView>
+    <SafeAreaProvider>
+      <SafeAreaView style={styles.safeArea}>
+        <StatusBar barStyle="dark-content" translucent={false} />
+        <ScrollView>
+          <Recommended heading={"Recently played"} />
+          <SongList />
+        </ScrollView>
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
 
@@ -23,5 +28,8 @@ const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: "row",
     gap: 8,
+  },
+  safeArea: {
+    flex: 1,
   },
 });

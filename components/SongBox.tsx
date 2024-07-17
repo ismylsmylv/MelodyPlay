@@ -2,8 +2,10 @@ import { useRouter } from "expo-router";
 import React from "react";
 import {
   Image,
+  Pressable,
   StyleSheet,
   Text,
+  Touchable,
   TouchableHighlight,
   TouchableOpacity,
   View,
@@ -23,13 +25,8 @@ const SongBox = ({ navigation }) => {
   };
 
   return (
-    <TouchableOpacity
-      style={styles.box}
-      onPress={() => router.push("/player")}
-
-      // onPress={() => navigation.navigate("player", { name: "Jane" })}
-    >
-      <View>
+    <TouchableOpacity onPress={() => router.push("/player")}>
+      <View style={styles.box}>
         <View style={styles.content}>
           <Image
             source={{ uri: song.icon }}
@@ -54,7 +51,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    padding: 10,
+    flex: 1,
   },
   content: {
     flexDirection: "row",
