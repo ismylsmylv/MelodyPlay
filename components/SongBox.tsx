@@ -1,3 +1,5 @@
+import { useAppDispatch } from "@/redux/hooks";
+import { setMusic } from "@/redux/slice";
 import { useRouter } from "expo-router";
 import React from "react";
 import {
@@ -14,18 +16,24 @@ import { Dimensions } from "react-native";
 
 const windowWidth = Dimensions.get("window").width;
 
-const SongBox = ({ navigation }) => {
+const SongBox = ({ song }) => {
   const router = useRouter();
   // Destructure navigation from props
-  const song = {
-    singer: "Thutmose",
-    title: "Memories",
-    icon: "https://i.scdn.co/image/ab67616d0000b273e2e352d89826aef6dbd5ff8f",
-    duration: "3:19",
-  };
+  const dispatch = useAppDispatch();
+  // const song = {
+  //   singer: "Thutmose",
+  //   title: "Memories",
+  //   icon: "https://i.scdn.co/image/ab67616d0000b273e2e352d89826aef6dbd5ff8f",
+  //   duration: "3:19",
+  // };
 
   return (
-    <TouchableOpacity onPress={() => router.push("/player")}>
+    <TouchableOpacity
+      onPress={() => {
+        dispatch(setMusic(song));
+        router.push("/player");
+      }}
+    >
       <View style={styles.box}>
         <View style={styles.content}>
           <Image

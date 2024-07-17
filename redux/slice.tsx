@@ -5,11 +5,13 @@ import type { RootState } from "./store";
 // Define a type for the slice state
 interface playerState {
   value: number;
+  music: object;
 }
 
 // Define the initial state using that type
 const initialState: playerState = {
   value: 0,
+  music: {},
 };
 
 export const playerSlice = createSlice({
@@ -27,10 +29,14 @@ export const playerSlice = createSlice({
     incrementByAmount: (state, action: PayloadAction<number>) => {
       state.value += action.payload;
     },
+    setMusic: (state, action: PayloadAction<object>) => {
+      state.music = action.payload;
+    },
   },
 });
 
-export const { increment, decrement, incrementByAmount } = playerSlice.actions;
+export const { increment, decrement, incrementByAmount, setMusic } =
+  playerSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectCount = (state: RootState) => state.player.value;
