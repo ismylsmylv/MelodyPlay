@@ -1,9 +1,11 @@
+import { useRouter } from "expo-router";
 import React from "react";
 import {
   Image,
   StyleSheet,
   Text,
   TouchableHighlight,
+  TouchableOpacity,
   View,
 } from "react-native";
 import { Dimensions } from "react-native";
@@ -11,6 +13,7 @@ import { Dimensions } from "react-native";
 const windowWidth = Dimensions.get("window").width;
 
 const SongBox = ({ navigation }) => {
+  const router = useRouter();
   // Destructure navigation from props
   const song = {
     singer: "Thutmose",
@@ -20,26 +23,29 @@ const SongBox = ({ navigation }) => {
   };
 
   return (
-    <TouchableHighlight
+    <TouchableOpacity
       style={styles.box}
-      onPress={() => navigation.navigate("player", { name: "Jane" })}
+      onPress={() => router.push("/player")}
+
+      // onPress={() => navigation.navigate("player", { name: "Jane" })}
     >
-      <View style={styles.content}>
-        <Image
-          source={{ uri: song.icon }}
-          style={{ width: 60, height: 60, borderRadius: 5 }} // Adjusted style syntax
-        />
-        <View style={{ marginLeft: 10 }}>
-          {" "}
-          {/* Adjusted margin style */}
-          <Text style={styles.title} numberOfLines={1}>
-            {song.title}
-          </Text>
-          <Text>{song.singer}</Text>
+      <View>
+        <View style={styles.content}>
+          <Image
+            source={{ uri: song.icon }}
+            style={{ width: 60, height: 60, borderRadius: 5 }} // Adjusted style syntax
+          />
+          <View style={{ marginLeft: 10 }}>
+            {/* Adjusted margin style */}
+            <Text style={styles.title} numberOfLines={1}>
+              {song.title}
+            </Text>
+            <Text>{song.singer}</Text>
+          </View>
         </View>
+        <Text>{song.duration}</Text>
       </View>
-      <Text>{song.duration}</Text>
-    </TouchableHighlight>
+    </TouchableOpacity>
   );
 };
 

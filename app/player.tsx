@@ -1,14 +1,14 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { View, Text, Button } from "react-native";
+import { useRouter } from "expo-router";
 
-const Player = () => {
+export default function Player() {
+  const router = useRouter();
+
   return (
-    <View>
-      <Text>song here</Text>
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text> Player</Text>
+      <Button title="Go to New Page" onPress={() => router.push("/newpage")} />
     </View>
   );
-};
-
-const styles = StyleSheet.create({});
-
-export default Player;
+}

@@ -70,14 +70,16 @@ const datas = [
     duration: "3:19",
   },
 ];
-const SongList = () => {
+const SongList = ({ navigation }) => {
   return (
     <View style={styles.box}>
       <Text style={styles.heading}>Music</Text>
       <FlatList
         // style={styles.list}
         data={datas}
-        renderItem={({ item }) => <SongBox song={item} />}
+        renderItem={({ item }) => (
+          <SongBox song={item} navigation={navigation} />
+        )}
         showsHorizontalScrollIndicator={false}
         keyExtractor={(item: { id: string }) => item.id}
         ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
