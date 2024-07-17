@@ -1,11 +1,97 @@
 import React from "react";
 import { AntDesign } from "@expo/vector-icons";
-import { ImageBackground, StyleSheet, Text, View } from "react-native";
+import {
+  ImageBackground,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import albumart from "@/assets/images/albumArt.png";
+import { useAppDispatch } from "@/redux/hooks";
+import { useRouter } from "expo-router";
+import { setMusic } from "@/redux/slice";
+const datas = [
+  {
+    singer: "Thutmose",
+    title: "MemoriesMemoriesMemoriesMemoriesMemoriesMemories",
+    icon: "https://i.scdn.co/image/ab67616d0000b273e2e352d89826aef6dbd5ff8f",
+    duration: "3:19",
+  },
+
+  {
+    singer: "Thutmose",
+    title: "Memories",
+    icon: "https://i.scdn.co/image/ab67616d0000b273e2e352d89826aef6dbd5ff8f",
+    duration: "3:19",
+  },
+  {
+    singer: "Thutmose",
+    title: "Memories",
+    icon: "https://i.scdn.co/image/ab67616d0000b273e2e352d89826aef6dbd5ff8f",
+    duration: "3:19",
+  },
+  {
+    singer: "Thutmose",
+    title: "Memories",
+    icon: "https://i.scdn.co/image/ab67616d0000b273e2e352d89826aef6dbd5ff8f",
+    duration: "3:19",
+  },
+  {
+    singer: "Thutmose",
+    title: "Memories",
+    icon: "https://i.scdn.co/image/ab67616d0000b273e2e352d89826aef6dbd5ff8f",
+    duration: "3:19",
+  },
+  {
+    singer: "Thutmose",
+    title: "Memories",
+    icon: "https://i.scdn.co/image/ab67616d0000b273e2e352d89826aef6dbd5ff8f",
+    duration: "3:19",
+  },
+  {
+    singer: "Thutmose",
+    title: "Memories",
+    icon: "https://i.scdn.co/image/ab67616d0000b273e2e352d89826aef6dbd5ff8f",
+    duration: "3:19",
+  },
+  {
+    singer: "Thutmose",
+    title: "Memories",
+    icon: "https://i.scdn.co/image/ab67616d0000b273e2e352d89826aef6dbd5ff8f",
+    duration: "3:19",
+  },
+  {
+    singer: "Thutmose",
+    title: "Memories",
+    icon: "https://i.scdn.co/image/ab67616d0000b273e2e352d89826aef6dbd5ff8f",
+    duration: "3:19",
+  },
+  {
+    singer: "Thutmose",
+    title: "Memories",
+    icon: "https://i.scdn.co/image/ab67616d0000b273e2e352d89826aef6dbd5ff8f",
+    duration: "3:19",
+  },
+  {
+    singer: "Thutmose",
+    title: "Memories",
+    icon: "https://i.scdn.co/image/ab67616d0000b273e2e352d89826aef6dbd5ff8f",
+    duration: "3:19",
+  },
+];
 const PlayerMini = () => {
+  const dispatch = useAppDispatch();
+  const router = useRouter();
   return (
-    <View style={styles.main}>
+    <TouchableOpacity
+      style={styles.main}
+      onPress={() => {
+        dispatch(setMusic(datas[0]));
+        router.push("/player");
+      }}
+    >
       <ImageBackground
         source={albumart}
         resizeMode="cover"
@@ -23,7 +109,7 @@ const PlayerMini = () => {
           <MaterialIcons name="skip-next" size={24} color="white" />
         </View>
       </ImageBackground>
-    </View>
+    </TouchableOpacity>
   );
 };
 

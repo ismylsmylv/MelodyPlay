@@ -10,24 +10,72 @@ import {
 import AlbumBox from "./AlbumBox";
 const datas = [
   {
-    text: "chill",
-    icon: "https://d1csarkz8obe9u.cloudfront.net/themedlandingpages/tlp_hero_album-cover-art-73ab5b3d9b81f442cb2288630ab63acf.jpg?ts%20=%201698245952",
+    singer: "Thutmose",
+    title: "MemoriesMemoriesMemoriesMemoriesMemoriesMemories",
+    icon: "https://i.scdn.co/image/ab67616d0000b273e2e352d89826aef6dbd5ff8f",
+    duration: "3:19",
   },
-  { text: "pop", icon: "logo-ionic" },
-  { text: "chill", icon: "logo-ionitron" },
-  { text: "pop", icon: "logo-ionic" },
-  { text: "chill", icon: "logo-ionitron" },
-  { text: "pop", icon: "logo-ionic" },
-  { text: "chill", icon: "logo-ionitron" },
-  { text: "pop", icon: "logo-ionic" },
-  { text: "chill", icon: "logo-ionitron" },
-  { text: "pop", icon: "logo-ionic" },
-  { text: "chill", icon: "logo-ionitron" },
-  { text: "pop", icon: "logo-ionic" },
-  { text: "chill", icon: "logo-ionitron" },
-  { text: "pop", icon: "logo-ionic" },
-  { text: "chill", icon: "logo-ionitron" },
-  { text: "pop", icon: "logo-ionic" },
+
+  {
+    singer: "Thutmose",
+    title: "Memories",
+    icon: "https://i.scdn.co/image/ab67616d0000b273e2e352d89826aef6dbd5ff8f",
+    duration: "3:19",
+  },
+  {
+    singer: "Thutmose",
+    title: "Memories",
+    icon: "https://i.scdn.co/image/ab67616d0000b273e2e352d89826aef6dbd5ff8f",
+    duration: "3:19",
+  },
+  {
+    singer: "Thutmose",
+    title: "Memories",
+    icon: "https://i.scdn.co/image/ab67616d0000b273e2e352d89826aef6dbd5ff8f",
+    duration: "3:19",
+  },
+  {
+    singer: "Thutmose",
+    title: "Memories",
+    icon: "https://i.scdn.co/image/ab67616d0000b273e2e352d89826aef6dbd5ff8f",
+    duration: "3:19",
+  },
+  {
+    singer: "Thutmose",
+    title: "Memories",
+    icon: "https://i.scdn.co/image/ab67616d0000b273e2e352d89826aef6dbd5ff8f",
+    duration: "3:19",
+  },
+  {
+    singer: "Thutmose",
+    title: "Memories",
+    icon: "https://i.scdn.co/image/ab67616d0000b273e2e352d89826aef6dbd5ff8f",
+    duration: "3:19",
+  },
+  {
+    singer: "Thutmose",
+    title: "Memories",
+    icon: "https://i.scdn.co/image/ab67616d0000b273e2e352d89826aef6dbd5ff8f",
+    duration: "3:19",
+  },
+  {
+    singer: "Thutmose",
+    title: "Memories",
+    icon: "https://i.scdn.co/image/ab67616d0000b273e2e352d89826aef6dbd5ff8f",
+    duration: "3:19",
+  },
+  {
+    singer: "Thutmose",
+    title: "Memories",
+    icon: "https://i.scdn.co/image/ab67616d0000b273e2e352d89826aef6dbd5ff8f",
+    duration: "3:19",
+  },
+  {
+    singer: "Thutmose",
+    title: "Memories",
+    icon: "https://i.scdn.co/image/ab67616d0000b273e2e352d89826aef6dbd5ff8f",
+    duration: "3:19",
+  },
 ];
 type Props = {
   heading: string;

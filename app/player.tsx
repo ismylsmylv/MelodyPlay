@@ -57,11 +57,9 @@ export default function Player() {
         <View style={styles.content}>
           <View>
             <Text style={styles.title} numberOfLines={1}>
-              {" "}
               {song.title}
             </Text>
             <Text style={styles.singer} numberOfLines={1}>
-              {" "}
               {song.singer}
             </Text>
           </View>

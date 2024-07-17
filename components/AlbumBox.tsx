@@ -1,12 +1,31 @@
 import React from "react";
-import { ImageBackground, StyleSheet, Text, View } from "react-native";
+import {
+  ImageBackground,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 import { Image } from "react-native";
 import albumart from "@/assets/images/albumArt.png";
-const AlbumBox = (album) => {
+import { useAppDispatch } from "@/redux/hooks";
+import { useRouter } from "expo-router";
+import { setMusic } from "@/redux/slice";
+const AlbumBox = ({ album }) => {
   //   const { uri } = Image.resolveAssetSource(require(album.icon));
+  const dispatch = useAppDispatch();
+  const router = useRouter();
+
   return (
-    <View style={styles.album}>
+    <TouchableOpacity
+      style={styles.album}
+      onPress={() => {
+        // alert(JSON.stringify(album));
+        dispatch(setMusic(album));
+        router.push("/player");
+      }}
+    >
       <ImageBackground
         source={albumart}
         resizeMode="cover"
@@ -18,7 +37,7 @@ const AlbumBox = (album) => {
         <Text style={styles.name}>Into the spider-verse</Text>
         <Text style={styles.artist}>Into the spider-verse</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
