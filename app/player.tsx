@@ -7,6 +7,7 @@ import {
   Image,
   TouchableOpacity,
   ImageBackground,
+  Dimensions,
 } from "react-native";
 import { useRouter } from "expo-router";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
@@ -14,6 +15,8 @@ import { increment } from "@/redux/slice";
 import { AntDesign, Entypo, MaterialCommunityIcons } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
+
+const windowWidth = Dimensions.get("window").width;
 export default function Player() {
   const router = useRouter();
   const song = useAppSelector((state) => state.player.music);
@@ -33,7 +36,13 @@ export default function Player() {
       blurRadius={10}
     >
       <View style={styles.navs}>
-        <Entypo name="chevron-thin-down" size={24} color="white" />
+        <TouchableOpacity
+          onPress={() => {
+            router.push("(tabs)");
+          }}
+        >
+          <Entypo name="chevron-thin-down" size={24} color="white" />
+        </TouchableOpacity>
         <Text style={{ color: "white" }}>Ambiance sound</Text>
         <Entypo name="dots-three-vertical" size={24} color="white" />
       </View>
@@ -47,8 +56,14 @@ export default function Player() {
         />
         <View style={styles.content}>
           <View>
-            <Text style={styles.title}> {song.title}</Text>
-            <Text style={styles.singer}> {song.singer}</Text>
+            <Text style={styles.title} numberOfLines={1}>
+              {" "}
+              {song.title}
+            </Text>
+            <Text style={styles.singer} numberOfLines={1}>
+              {" "}
+              {song.singer}
+            </Text>
           </View>
 
           <TouchableOpacity
@@ -80,11 +95,7 @@ export default function Player() {
             setpause(!pause);
           }}
         >
-          <Ionicons
-            name={pause ? "pause" : "play"}
-            size={40}
-            color="rgba(0, 0, 0, 0.5)"
-          />
+          <Ionicons name={pause ? "pause" : "play"} size={40} color="black" />
         </TouchableOpacity>
         <MaterialIcons name="skip-next" size={24} color="white" />
         <MaterialCommunityIcons name="playlist-music" size={25} color="white" />
@@ -113,6 +124,7 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     marginBottom: 5,
     color: "white",
+    maxWidth: windowWidth - 100,
   },
   singer: {
     color: "white",
