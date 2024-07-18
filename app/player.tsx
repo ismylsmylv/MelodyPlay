@@ -48,7 +48,7 @@ export default function Player() {
       </View>
       <View>
         <Image
-          source={{ uri: song.icon }}
+          source={{ uri: song?.icon }}
           height={300}
           width={300}
           borderRadius={10}
@@ -57,10 +57,10 @@ export default function Player() {
         <View style={styles.content}>
           <View>
             <Text style={styles.title} numberOfLines={1}>
-              {song.title}
+              {song?.title}
             </Text>
             <Text style={styles.singer} numberOfLines={1}>
-              {song.singer}
+              {song?.singer}
             </Text>
           </View>
 
@@ -80,7 +80,7 @@ export default function Player() {
           <View style={styles.line}></View>
           <View style={styles.times}>
             <Text style={styles.time}>1:15</Text>
-            <Text style={styles.time}>{song.duration}</Text>
+            <Text style={styles.time}>{song?.duration}</Text>
           </View>
         </View>
       </View>

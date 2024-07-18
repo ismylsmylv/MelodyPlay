@@ -3,52 +3,52 @@ import { setMusic } from "@/redux/slice";
 import { useRouter } from "expo-router";
 import React from "react";
 import {
+  Dimensions,
   Image,
-  Pressable,
   StyleSheet,
   Text,
-  Touchable,
-  TouchableHighlight,
   TouchableOpacity,
   View,
 } from "react-native";
-import { Dimensions } from "react-native";
-
+import NoIcon from "@/assets/images/no-icon.png";
 const windowWidth = Dimensions.get("window").width;
-
+function Duration(duration: string) {
+  const minutes = Math.floor(Number(duration) / 60);
+  let seconds = (Number(duration) - minutes * 60).toFixed(0);
+  if (seconds.length == 1) {
+    seconds = "0" + seconds;
+  }
+  return minutes + ":" + seconds;
+}
 const SongBox = ({ song }) => {
   const router = useRouter();
-  // Destructure navigation from props
   const dispatch = useAppDispatch();
-  // const song = {
-  //   singer: "Thutmose",
-  //   title: "Memories",
-  //   icon: "https://i.scdn.co/image/ab67616d0000b273e2e352d89826aef6dbd5ff8f",
-  //   duration: "3:19",
-  // };
 
   return (
     <TouchableOpacity
       onPress={() => {
         dispatch(setMusic(song));
-        router.push("/player");
+        // router.push("/player");
+        alert(JSON.stringify(song));
       }}
     >
       <View style={styles.box}>
         <View style={styles.content}>
           <Image
-            source={{ uri: song.icon }}
+            source={song.icon ? { uri: song.icon } : NoIcon}
             style={{ width: 60, height: 60, borderRadius: 5 }} // Adjusted style syntax
           />
           <View style={{ marginLeft: 10 }}>
             {/* Adjusted margin style */}
             <Text style={styles.title} numberOfLines={1}>
-              {song.title}
+              {song?.filename}
             </Text>
-            <Text>{song.singer}</Text>
+            <Text style={{ opacity: 0.7 }}>
+              {song.artist ? song.artist : "Unknown artist"}
+            </Text>
           </View>
         </View>
-        <Text>{song.duration}</Text>
+        <Text>{Duration(song?.duration)}</Text>
       </View>
     </TouchableOpacity>
   );

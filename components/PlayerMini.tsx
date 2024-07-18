@@ -17,7 +17,7 @@ import * as MediaLibrary from "expo-media-library";
 
 const PlayerMini = () => {
   const [musicFiles, setMusicFiles] = useState([]);
-  const [playing, setPlaying] = useState(-1);
+  const [playing, setPlaying] = useState(false);
   const [sound, setSound] = useState(null);
   const [progressDuration, setProgressDuration] = useState(0);
   const fetchMusicFiles = async () => {
@@ -59,23 +59,7 @@ const PlayerMini = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
   return (
-    <TouchableOpacity
-      style={styles.main}
-      onPress={() => {
-        // dispatch(setMusic(datas[0]));
-        // router.push("/player");
-        // playing !== index
-        //   ? () => {
-        playMusic(musicFiles[0].uri);
-        // alert(JSON.stringify(musicFiles[0].uri));
-        // setPlaying(index);
-        //   }
-        // : () => {
-        //     pauseMusic();
-        //     setPlaying(-1);
-        //   };
-      }}
-    >
+    <View style={styles.main}>
       <ImageBackground
         source={albumart}
         resizeMode="cover"
@@ -88,12 +72,34 @@ const PlayerMini = () => {
         <View style={styles.controls}>
           <AntDesign name="hearto" size={19} color="white" />
           <MaterialIcons name="skip-previous" size={24} color="white" />
-          <AntDesign name="pause" size={24} color="white" />
+          <TouchableOpacity
+            onPress={() => {
+              // dispatch(setMusic(datas[0]));
+              // router.push("/player");
+              // playing !== index
+              //   ? () => {
+              setPlaying(!playing);
+              playing ? pauseMusic() : playMusic(musicFiles[0].uri);
+              // alert(JSON.stringify(musicFiles[0].uri));
+              // setPlaying(index);
+              //   }
+              // : () => {
+              //     pauseMusic();
+              //     setPlaying(-1);
+              //   };
+            }}
+          >
+            <AntDesign
+              name={!playing ? "pause" : "play"}
+              size={24}
+              color="white"
+            />
+          </TouchableOpacity>
           <View style={styles.tracker}></View>
           <MaterialIcons name="skip-next" size={24} color="white" />
         </View>
       </ImageBackground>
-    </TouchableOpacity>
+    </View>
   );
 };
 
