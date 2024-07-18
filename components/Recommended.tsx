@@ -1,84 +1,9 @@
 import React from "react";
-import {
-  FlatList,
-  ImageBackground,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
-
+import { FlatList, StyleSheet, Text, View } from "react-native";
 import AlbumBox from "./AlbumBox";
-const datas = [
-  {
-    singer: "Thutmose",
-    title: "MemoriesMemoriesMemoriesMemoriesMemoriesMemories",
-    icon: "https://i.scdn.co/image/ab67616d0000b273e2e352d89826aef6dbd5ff8f",
-    duration: "3:19",
-  },
-
-  {
-    singer: "Thutmose",
-    title: "Memories",
-    icon: "https://i.scdn.co/image/ab67616d0000b273e2e352d89826aef6dbd5ff8f",
-    duration: "3:19",
-  },
-  {
-    singer: "Thutmose",
-    title: "Memories",
-    icon: "https://i.scdn.co/image/ab67616d0000b273e2e352d89826aef6dbd5ff8f",
-    duration: "3:19",
-  },
-  {
-    singer: "Thutmose",
-    title: "Memories",
-    icon: "https://i.scdn.co/image/ab67616d0000b273e2e352d89826aef6dbd5ff8f",
-    duration: "3:19",
-  },
-  {
-    singer: "Thutmose",
-    title: "Memories",
-    icon: "https://i.scdn.co/image/ab67616d0000b273e2e352d89826aef6dbd5ff8f",
-    duration: "3:19",
-  },
-  {
-    singer: "Thutmose",
-    title: "Memories",
-    icon: "https://i.scdn.co/image/ab67616d0000b273e2e352d89826aef6dbd5ff8f",
-    duration: "3:19",
-  },
-  {
-    singer: "Thutmose",
-    title: "Memories",
-    icon: "https://i.scdn.co/image/ab67616d0000b273e2e352d89826aef6dbd5ff8f",
-    duration: "3:19",
-  },
-  {
-    singer: "Thutmose",
-    title: "Memories",
-    icon: "https://i.scdn.co/image/ab67616d0000b273e2e352d89826aef6dbd5ff8f",
-    duration: "3:19",
-  },
-  {
-    singer: "Thutmose",
-    title: "Memories",
-    icon: "https://i.scdn.co/image/ab67616d0000b273e2e352d89826aef6dbd5ff8f",
-    duration: "3:19",
-  },
-  {
-    singer: "Thutmose",
-    title: "Memories",
-    icon: "https://i.scdn.co/image/ab67616d0000b273e2e352d89826aef6dbd5ff8f",
-    duration: "3:19",
-  },
-  {
-    singer: "Thutmose",
-    title: "Memories",
-    icon: "https://i.scdn.co/image/ab67616d0000b273e2e352d89826aef6dbd5ff8f",
-    duration: "3:19",
-  },
-];
 type Props = {
   heading: string;
+  musicFiles: [];
 };
 const Recommended = ({ heading, musicFiles }: Props) => {
   return (

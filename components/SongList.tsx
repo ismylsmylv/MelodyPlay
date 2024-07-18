@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   box: {
-    padding: 20,
+    paddingHorizontal: 20,
   },
 });
 

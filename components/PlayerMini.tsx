@@ -1,5 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { AntDesign } from "@expo/vector-icons";
+import albumart from "@/assets/images/albumArt.png";
+import { useAppDispatch } from "@/redux/hooks";
+import { AntDesign, MaterialIcons } from "@expo/vector-icons";
+import { Audio } from "expo-av";
+import * as MediaLibrary from "expo-media-library";
+import { useRouter } from "expo-router";
+import { useEffect, useState } from "react";
 import {
   ImageBackground,
   StyleSheet,
@@ -7,57 +12,68 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { MaterialIcons } from "@expo/vector-icons";
-import albumart from "@/assets/images/albumArt.png";
-import { useAppDispatch } from "@/redux/hooks";
-import { useRouter } from "expo-router";
-import { setMusic } from "@/redux/slice";
-import { Audio } from "expo-av";
-import * as MediaLibrary from "expo-media-library";
+import musicMetadata from "react-native-music-metadata";
 
 const PlayerMini = () => {
   const [musicFiles, setMusicFiles] = useState([]);
   const [playing, setPlaying] = useState(false);
   const [sound, setSound] = useState(null);
   const [progressDuration, setProgressDuration] = useState(0);
+
   const fetchMusicFiles = async () => {
     const permission = await MediaLibrary.requestPermissionsAsync();
     const media = await MediaLibrary.getAssetsAsync({
       mediaType: MediaLibrary.MediaType.audio,
     });
-    setMusicFiles(media.assets);
+
+    const filesWithMetadata = await Promise.all(
+      media.assets.map(async (file) => {
+        const metadata = await musicMetadata.fetchFromUri(file.uri);
+        return {
+          ...file,
+          albumArt: metadata.common.picture
+            ? `data:image/jpeg;base64,${metadata.common.picture[0].data}`
+            : null,
+        };
+      })
+    );
+
+    setMusicFiles(filesWithMetadata);
   };
+
   const playMusic = async (fileUri) => {
-    const { sound } = await Audio.Sound.createAsync({
-      uri: fileUri,
-    });
+    const { sound } = await Audio.Sound.createAsync({ uri: fileUri });
     setSound(sound);
     await sound.playAsync();
+    setPlaying(true);
   };
 
   const pauseMusic = async () => {
     await sound.pauseAsync();
+    setPlaying(false);
   };
+
   useEffect(() => {
-    if (!sound) {
-      return;
-    }
+    if (!sound) return;
+
     sound.setOnPlaybackStatusUpdate(async (status) => {
       if (status.didJustFinish) {
-        setPlaying(-1);
+        setPlaying(false);
         await sound.unloadAsync();
-        console.log("finished");
         setSound(null);
       } else {
         setProgressDuration(status.positionMillis / 1000);
       }
     });
   }, [sound]);
+
   useEffect(() => {
     fetchMusicFiles();
   }, []);
+
   const dispatch = useAppDispatch();
   const router = useRouter();
+
   return (
     <View style={styles.main}>
       <ImageBackground

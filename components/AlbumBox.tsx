@@ -12,6 +12,7 @@ import albumart from "@/assets/images/albumArt.png";
 import { useAppDispatch } from "@/redux/hooks";
 import { useRouter } from "expo-router";
 import { setMusic } from "@/redux/slice";
+import NoIcon from "@/assets/images/no-icon.png";
 const AlbumBox = ({ album }) => {
   //   const { uri } = Image.resolveAssetSource(require(album.icon));
   const dispatch = useAppDispatch();
@@ -27,11 +28,11 @@ const AlbumBox = ({ album }) => {
       }}
     >
       <ImageBackground
-        source={albumart}
+        source={album.icon ? album.icon : NoIcon}
         resizeMode="cover"
         style={styles.image}
       >
-        <Text style={styles.text}>Into the spider-verse</Text>
+        {/* <Text style={styles.text}>Into the spider-verse</Text> */}
       </ImageBackground>
       <View style={styles.footer}>
         <Text style={styles.name}>{album.filename}</Text>
