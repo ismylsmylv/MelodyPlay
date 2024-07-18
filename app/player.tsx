@@ -15,7 +15,15 @@ import { increment } from "@/redux/slice";
 import { AntDesign, Entypo, MaterialCommunityIcons } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
-
+import NoIcon from "@/assets/images/no-icon.png";
+function Duration(duration: string) {
+  const minutes = Math.floor(Number(duration) / 60);
+  let seconds = (Number(duration) - minutes * 60).toFixed(0);
+  if (seconds.length == 1) {
+    seconds = "0" + seconds;
+  }
+  return minutes + ":" + seconds;
+}
 const windowWidth = Dimensions.get("window").width;
 export default function Player() {
   const router = useRouter();
@@ -25,7 +33,7 @@ export default function Player() {
   const [pause, setpause] = useState(false);
   return (
     <ImageBackground
-      source={{ uri: song.icon }}
+      source={song.icon ? { uri: song.icon } : NoIcon}
       style={{
         flex: 1,
         justifyContent: "space-between",
@@ -33,7 +41,7 @@ export default function Player() {
         gap: 20,
         padding: 30,
       }}
-      blurRadius={10}
+      blurRadius={5}
     >
       <View style={styles.navs}>
         <TouchableOpacity
@@ -57,10 +65,10 @@ export default function Player() {
         <View style={styles.content}>
           <View>
             <Text style={styles.title} numberOfLines={1}>
-              {song?.title}
+              {song?.filename}
             </Text>
             <Text style={styles.singer} numberOfLines={1}>
-              {song?.singer}
+              {song.artist ? song?.artist : "Unknown artist"}
             </Text>
           </View>
 
@@ -80,7 +88,7 @@ export default function Player() {
           <View style={styles.line}></View>
           <View style={styles.times}>
             <Text style={styles.time}>1:15</Text>
-            <Text style={styles.time}>{song?.duration}</Text>
+            <Text style={styles.time}>{Duration(song?.duration)}</Text>
           </View>
         </View>
       </View>

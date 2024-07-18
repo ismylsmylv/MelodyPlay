@@ -28,8 +28,8 @@ const SongBox = ({ song }) => {
     <TouchableOpacity
       onPress={() => {
         dispatch(setMusic(song));
-        // router.push("/player");
-        alert(JSON.stringify(song));
+        router.push("/player");
+        // alert(JSON.stringify(song));
       }}
     >
       <View style={styles.box}>

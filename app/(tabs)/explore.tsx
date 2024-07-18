@@ -3,13 +3,10 @@ import SongList from "@/components/SongList";
 import * as MediaLibrary from "expo-media-library";
 import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
-import { SafeAreaView, ScrollView, StyleSheet } from "react-native";
+import { SafeAreaView, ScrollView, StyleSheet, View } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 export default function TabTwoScreen() {
   const [musicFiles, setMusicFiles] = useState([]);
-  const [playing, setPlaying] = useState(-1);
-  const [sound, setSound] = useState(null);
-  const [progressDuration, setProgressDuration] = useState(0);
   const fetchMusicFiles = async () => {
     const permission = await MediaLibrary.requestPermissionsAsync();
     const media = await MediaLibrary.getAssetsAsync({
@@ -24,10 +21,12 @@ export default function TabTwoScreen() {
     <SafeAreaProvider>
       <SafeAreaView style={styles.safeArea}>
         <StatusBar barStyle="dark-content" translucent={false} />
-        <ScrollView>
-          <Recommended heading={"Recently played"} musicFiles={musicFiles} />
-          <SongList />
-        </ScrollView>
+        <View>
+          <ScrollView>
+            <Recommended heading={"Recently played"} musicFiles={musicFiles} />
+            <SongList />
+          </ScrollView>
+        </View>
       </SafeAreaView>
     </SafeAreaProvider>
   );
